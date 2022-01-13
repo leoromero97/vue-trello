@@ -138,3 +138,7 @@ li {
   font-weight: 400;
   margin-bottom: 1rem;
 }
+
+.completed {
+  background-color: var(--secondary);
+}

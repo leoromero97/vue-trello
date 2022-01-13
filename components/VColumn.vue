@@ -11,19 +11,29 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex';
+
 export default {
   name: 'Column',
   props: {
     listId: String,
     name: String,
   },
-  data () {
-    return {
-      tasksList: [
-        { id: '1', title: 'Aprender Vue', completed: false },
-        { id: '2', title: 'Aprender Vuex', completed: false }
-      ]
+  computed: {
+    ...mapGetters([
+      'getTasksFromList'
+    ]),
+    tasksList () {
+      return this.getTasksFromList(this.listId);
     }
+  },
+  methods: {
+    ...mapActions([
+      'fetchTasks'
+    ])
+  },
+  created () {
+    this.fetchTasks({ list: this.listId })
   }
 }
 </script>

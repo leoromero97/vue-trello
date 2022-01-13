@@ -6,6 +6,8 @@
       :class="{ completed: task.completed }"
     >
       {{ task.title }}
+    <input type="checkbox" @click="markAsCompleted({ task })" >
+    <input type="checkbox" @click="deleteTask({ taskId: task.id })" >
     </li>
     <VInput 
       :placeholder="placeholderData"
@@ -19,6 +21,8 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
+
 export default {
   name: 'TaskList',
   props: {
@@ -32,8 +36,13 @@ export default {
     }
   },
   methods: {
+    ...mapActions([
+      'addTask',
+      'markAsCompleted',
+      'deleteTask'
+    ]),
     addNewTask () {
-       this.tasks.push({ title: this.title });
+       this.addTask({ list: this.listId, title: this.title });
        this.title = ''
     }
   }
