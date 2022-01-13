@@ -1,0 +1,160 @@
+@import url('https://fonts.googleapis.com/css2?family=Spline+Sans:wght@400;500;600;700&display=swap');
+@import './button.css';
+@import './texts.css';
+
+html {
+  font-size: 62.5%; /* 10px = 1rem*/
+}
+
+* {
+  box-sizing: border-box;
+  font-size: 1.6rem;
+  font-style: normal;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+
+:root {
+  --grey: #909cbc;
+  --black: #303041;
+  --primary: #6F39B6;
+  --secondary: #FDA9FE;
+  --secondary-50: #ffecff;
+  --tertiary: #9DE3F9;
+  --tertiary-50: #d1f3fd;
+  --white-primary: #f9f5ff;
+  --white: #FFFFFF;
+  --black: #09050f;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Spline Sans', sans-serif;
+  background-color: var(--white-primary);
+  color: var(--black);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span,
+label,
+input,
+button,
+select,
+textarea {
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 25px;
+  margin: 0;
+}
+
+h1:focus,
+h2:focus,
+h3:focus,
+h4:focus,
+h5:focus,
+h6:focus,
+p:focus,
+span:focus,
+label:focus,
+input:focus,
+a:focus,
+button:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+}
+
+select {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+
+table {
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+input,
+select,
+textarea,
+button {
+  border: 0;
+  border-radius: 0;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+button {
+  cursor: pointer;
+}
+
+button::-moz-focus-inner {
+  border: 0;
+}
+
+a {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+a:focus,
+a:active {
+  text-decoration: none;
+}
+
+ul,
+li {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+::placeholder {
+  color: #999;
+  opacity: 1;
+}
+
+.input-container {
+  border-radius: 1rem;
+  box-shadow: 0 0 0.4rem var(--secondary);
+  padding: 1.4rem;
+  margin-bottom: 4rem;
+}
+
+.input-message {
+  font-size: 1.8rem;
+  font-weight: 400;
+  margin-bottom: 1rem;
+}
+
+.input {
+  border-radius: 1rem;
+  color: var(--black);
+  padding: 1rem;
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+  margin-right: 1rem;
+  max-width: 60rem;
+  width: 100%;
+}
+
+.input:focus,
+.input:active {
+  border: 1px solid var(--primary);
+}
+
+.input::placeholder {
+  font-size: 1.4rem;
+}
