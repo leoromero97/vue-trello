@@ -5,13 +5,11 @@
       <h1 class="title">Mis tableros</h1>
       <div class="input-container">
         <h3 class="input-message">Hora de crear un tablero de tareas</h3>
-        <input 
-          type="text"
-          placeholder="¿Cómo se llama tu nuevo tablero?"
-          class="input"
+        <VInput 
+          :placeholder="placeholderData"
+          :addFunction="addNewBoard"
           v-model="boardName"
-          @keyup.enter="addNewBoard()"
-          >
+        />
         <button class="button button-primary" @click="addNewBoard()">
           Crear
         </button>
@@ -57,7 +55,8 @@ export default {
           id: 'nextTraining',
           name: 'Next js Training'
         }
-      ]
+      ],
+      placeholderData: '¿Como se llama tu tablero?'
     }
   },
   methods: {
@@ -68,7 +67,6 @@ export default {
   }
 }
 </script>
-
 
 <style scoped>
   .main {
