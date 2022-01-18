@@ -5,13 +5,11 @@
       <h1 class="title">Tableros > {{ this.$route.params.name }}</h1>
       <div class="input-container">
         <h3 class="input-message">Crea una nueva lista de tareas</h3>
-        <input 
-          type="text"
-          placeholder="¿Cómo se llama tu nueva lista?"
-          class="input"
+        <VInput 
+          :placeholder="placeholderData"
+          :addFunction="addNewList"
           v-model="listName"
-          @keyup.enter="addNewList()"
-          >
+        />
         <button class="button button-primary" @click="addNewList()">
           Crear
         </button>
@@ -47,7 +45,8 @@ export default {
       boardList: [
         { id: '1', name: 'Todo'},
         { id: '2', name: 'Doing'}
-      ]
+      ],
+      placeholderData: '¿Cómo se llama tu nueva lista?'
     }
   },
   methods: {

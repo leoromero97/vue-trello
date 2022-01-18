@@ -7,13 +7,11 @@
     >
       {{ task.title }}
     </li>
-    <input
-      type="text"
-      placeholder="Agregar tarea"
+    <VInput 
+      :placeholder="placeholderData"
+      :addFunction="addNewTask"
       v-model="title"
-      @keyup.enter="addNewTask()"
-      class="input"
-    >
+    />
     <button class="button button-primary" @click="addNewTask()">
       Agregar
     </button>
@@ -29,7 +27,8 @@ export default {
   },
   data () {
     return {
-      title: ''
+      title: '',
+      placeholderData: 'Agregar tarea'
     }
   },
   methods: {
