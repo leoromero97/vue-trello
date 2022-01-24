@@ -3,6 +3,9 @@
     <VHeader />
     <div class="container">
       <h1 class="title">Mis tableros</h1>
+      <div v-if="fetchingData">
+          <p>Cargando tableros...</p>
+      </div>
       <div class="input-container">
         <h3 class="input-message">Hora de crear un tablero de tareas</h3>
         <VInput 
@@ -27,6 +30,8 @@
 </template>
 
 <script>
+import { mapState, mapActions } from 'vuex';
+
 export default {
   name: 'IndexPage',
   head () {
@@ -38,32 +43,27 @@ export default {
   data () {
     return {
       boardName: '',
-      boards: [
-        { 
-          id: 'vueTraining',
-          name: 'Vue js Training'
-        },
-        { 
-          id: 'nuxtTraining',
-          name: 'Nuxt Training'
-        },
-        { 
-          id: 'reactTraining',
-          name: 'React js Training'
-        },
-        { 
-          id: 'nextTraining',
-          name: 'Next js Training'
-        }
-      ],
       placeholderData: '¿Como se llama tu tablero?'
     }
   },
+  computed: {
+    ...mapState([
+      'boards',
+      'fetchingData'
+    ])
+  },
   methods: {
+    ...mapActions([
+      'fetchBoards',
+      'addBoard'
+    ]),
     addNewBoard () {
-      this.boards.push({ name: this.boardName });
+      this.addBoard({ name: this.boardName });
       this.boardName = ''
-    }
+    },
+  },
+  created () {
+    this.fetchBoards({user: 1})
   }
 }
 </script>

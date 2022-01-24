@@ -27,6 +27,8 @@
 </template>
 
 <script>
+import { mapState, mapActions, mapGetters } from 'vuex';
+
 export default {
   name: 'board',
   components: {},
@@ -42,18 +44,32 @@ export default {
   data () {
     return {
       listName: '',
-      boardList: [
-        { id: '1', name: 'Todo'},
-        { id: '2', name: 'Doing'}
-      ],
       placeholderData: '¿Cómo se llama tu nueva lista?'
     }
   },
   methods: {
+    ...mapActions([
+      'fetchLists',
+      'addColumn'
+    ]),
     addNewList () {
-      this.boardList.push({ name: this.listName});
+      this.addColumn({ board: this.id, name: this.listName});
       this.listName = ''
     }
+  },
+  computed: {
+    ...mapState([
+      'fetchingData'
+    ]),
+    ...mapGetters([
+      'getListByBoard'
+    ]),
+    boardList () {
+      return this.getListByBoard(this.id);
+    }
+  },
+  created () {
+    this.fetchLists({ board });
   }
 }
 </script>
